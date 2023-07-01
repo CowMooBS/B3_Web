@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column; /* Các phần tử con được xếp từ trên xuống */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    height: 100vh; /* Chiều cao của khung sẽ bằng chiều cao của màn hình */
+    border: 2px solid black; /* Viền đen 2px rộng */
+    box-sizing: border-box; /* Kích thước của khung tính cả viền */
+  }
+  

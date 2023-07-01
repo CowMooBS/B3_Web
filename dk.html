@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản</title>
+    <link rel="shortcut icon" href="https://vimass.vn/vidientu/assets/images/icondangky.png" type="image/x-icon">
+    <link rel="stylesheet" href="/dk.js">
+    <script src="/dk.js"></script>
+    <style>
+        body 
+            {
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            background-color: bisque;
+            margin-left:25%;
+            margin-right:25%;
+            border: 3px dashed yellow;
+            margin-bottom: 5px;
+            padding: 50px 60px;
+            text-align: center;
+            }
+        input[type=text], input[type=password] 
+            {
+            width: 30%;
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #F5F5F5;
+            }
+        hr 
+            {
+            border: 2px dashed blue;
+            margin-bottom: 5px;
+            }
+        .registerbutton
+            {
+            background-color: blue;
+            color: white;
+            padding: 15px 20px;
+            margin: 10px 0px;
+            border: none;
+            cursor: pointer;
+            width: 30%;
+            text:bold;
+            }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="dang ky">
+            <h1>Đăng ký tài khoản</h1>
+            <p>Bạn cần đăng ký tài khoản trước khi sử dụng trình duyệt  -_-</p>
+            <hr>
+            
+            <label for="name"><b>Họ và tên</b></label>
+            <input type="text" placeholder="Nhập họ tên:" name="name" required><br>
+            
+            <label for="number"><b>Mã sinh viên</b></label>
+            <input type="text" placeholder="VD 2020600286" name="number" required><br>
+            
+            <label for="email"><b>Email</b></label> 
+            <input type="text" placeholder="Nhập Email:" name="email" required><br>
+    
+            <label for="pwd"><b>Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu:" name="number1" required><br>
+    
+            <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
+            <input type="password" placeholder="Nhập lại mật khẩu:" name="number1-repeat" required><br>
+            <hr>
+            <p>Mọi thắc mắc xin vui lòng liên hệ đến <a href="https://dsa.haui.edu.vn/vn">CTSV</a>.</p>
+    
+            <button type="submit" class="registerbutton">Đăng ký tài khoản</button>
+            
+      
+            
+            <p>Bạn đã có tài khoản rồi?<a href="#">Đăng nhập</a>.</p>
+            
+        </form>
+    
+    </div>
+</body>
+</html>

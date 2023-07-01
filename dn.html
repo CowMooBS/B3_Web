@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Đăng nhập tài khoản</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/dn.css" />
+  <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/thumbnails/007/033/146/small/profile-icon-login-head-icon-vector.jpg" type="image/x-icon">
+  <style>
+    .login-history-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .login-history-table th,
+    .login-history-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .login-history-table th {
+      background-color: #f2f2f2;
+    }
+
+    .hide-btn {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body class="body">
+  <div class="login-page">
+    <form id="login-form" method="POST" action="/login.php">
+      <div class="form">
+        <label for="name"><b>Họ và tên</b></label>
+        <input type="text" placeholder="Nhập họ tên:" name="name" required><br>
+
+        <label for="number"><b>Mã sinh viên</b></label>
+        <input type="text" placeholder="Nhập mã sinh viên:" name="number" required><br>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Nhập Email:" name="email" required><br>
+
+        <label for="pwd"><b>Mật khẩu</b></label>
+        <input type="password" placeholder="Nhập mật khẩu:" name="password" required><br>
+
+        <hr>
+        <p>Mọi thắc mắc xin vui lòng liên hệ đến <a href="https://dsa.haui.edu.vn/vn">CTSV</a>.</p>
+
+        <button type="submit" class="registerbutton">Đăng nhập</button>
+      </div>
+    </form>
+
+    <div class="login-history-container">
+      <button id="hide-btn" class="hide-btn" onclick="toggleLoginHistory()">Hiện lịch sử đăng nhập</button>
+      <table id="login-history-table" style="display: none;" class="login-history-table">
+        <thead>
+          <tr>
+            <th>Họ và tên</th>
+            <th>Mã sinh viên</th>
+            <th>Email</th>
+            <th>Mật khẩu</th>
+          </tr>
+        </thead>
+        <tbody id="login-history-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Lắng nghe sự kiện submit form
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Lấy giá trị từ các trường input
+      var name = document.getElementsByName("name")[0].value;
+      var number = document.getElementsByName("number")[0].value;
+      var email = document.getElementsByName("email")[0].value;
+      var password = document.getElementsByName("password")[0].value;
+
+      // Lưu dữ liệu đăng nhập vào localStorage
+      var loginData = { name: name, number: number, email: email, password: password };
+      var loginHistory = localStorage.getItem("loginHistory");
+      if (loginHistory) {
+        loginHistory = JSON.parse(loginHistory);
+        loginHistory.push(loginData);
+      } else {
+        loginHistory = [loginData];
+      }
+      localStorage.setItem("loginHistory", JSON.stringify(loginHistory));
+
+      // Xóa giá trị trong các trường input
+      document.getElementsByName("name")[0].value = "";
+      document.getElementsByName("number")[0].value = "";
+      document.getElementsByName("email")[0].value = "";
+      document.getElementsByName("password")[0].value = "";
+
+      // Cập nhật lịch sử đăng nhập
+      updateLoginHistory();
+    });
+
+    // Hiển thị/ẩn lịch sử đăng nhập
+    function toggleLoginHistory() {
+      var loginHistoryTable = document.getElementById("login-history-table");
+      var hideBtn = document.getElementById("hide-btn");
+
+      if (loginHistoryTable.style.display === "none") {
+        showLoginHistory();
+        loginHistoryTable.style.display = "table";
+        hideBtn.textContent = "Ẩn lịch sử đăng nhập";
+      } else {
+        loginHistoryTable.style.display = "none";
+        hideBtn.textContent = "Hiện lịch sử đăng nhập";
+      }
+    }
+
+    // Hiển thị lịch sử đăng nhập
+    function showLoginHistory() {
+      var loginHistory = localStorage.getItem("loginHistory");
+      if (loginHistory) {
+        loginHistory = JSON.parse(loginHistory);
+        var loginHistoryBody = document.getElementById("login-history-body");
+
+        // Xóa các dòng cũ trong bảng
+        while (loginHistoryBody.firstChild) {
+          loginHistoryBody.removeChild(loginHistoryBody.firstChild);
+        }
+
+        // Thêm dữ liệu lịch sử vào bảng
+        for (var i = 0; i < loginHistory.length; i++) {
+          var row = document.createElement("tr");
+          var nameCell = document.createElement("td");
+          var numberCell = document.createElement("td");
+          var emailCell = document.createElement("td");
+          var passwordCell = document.createElement("td");
+
+          nameCell.textContent = loginHistory[i].name;
+          numberCell.textContent = loginHistory[i].number;
+          emailCell.textContent = loginHistory[i].email;
+          passwordCell.textContent = loginHistory[i].password;
+
+          row.appendChild(nameCell);
+          row.appendChild(numberCell);
+          row.appendChild(emailCell);
+          row.appendChild(passwordCell);
+
+          loginHistoryBody.appendChild(row);
+        }
+      }
+    }
+
+    // Cập nhật lịch sử đăng nhập
+    function updateLoginHistory() {
+      var loginHistoryTable = document.getElementById("login-history-table");
+      var loginHistoryBody = document.getElementById("login-history-body");
+
+      var name = document.getElementsByName("name")[0].value;
+      var number = document.getElementsByName("number")[0].value;
+      var email = document.getElementsByName("email")[0].value;
+      var password = document.getElementsByName("password")[0].value;
+
+      var row = document.createElement("tr");
+      var nameCell = document.createElement("td");
+      var numberCell = document.createElement("td");
+      var emailCell = document.createElement("td");
+      var passwordCell = document.createElement("td");
+
+      nameCell.textContent = name;
+      numberCell.textContent = number;
+      emailCell.textContent = email;
+      passwordCell.textContent = password;
+
+      row.appendChild(nameCell);
+      row.appendChild(numberCell);
+      row.appendChild(emailCell);
+      row.appendChild(passwordCell);
+
+      loginHistoryBody.appendChild(row);
+      loginHistoryTable.style.display = "table";
+    }
+
+    // Xóa dữ liệu lịch sử đăng nhập
+    function clearLoginHistory() {
+      localStorage.removeItem("loginHistory");
+      var loginHistoryBody = document.getElementById("login-history-body");
+      while (loginHistoryBody.firstChild) {
+        loginHistoryBody.removeChild(loginHistoryBody.firstChild);
+      }
+    }
+  </script>
+</body>
+</html>

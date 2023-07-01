@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cơ sở dữ liệu</title>
+  <link rel="stylesheet" href="/B3_Web/csdl.css">
+  <link rel="shortcut icon" href="data:image/png;base64,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" type="image/x-icon">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__list">
+        <img src="/B3_Web/IMG/logo_ngang.png" alt="">
+        <div class="header__items"><a href="/B3_Web/index.html" style="text-decoration: none;color:#fff">Trang chủ</a></div>
+        <div class="header__items">Phòng</div>
+        <div class="header__items"><a href="#" style="text-decoration: none;color:#fff">Môn học</a></div>
+        <div class="header__items">Trung tâm đào tạo</div>
+        <div class="header__items">Trung tâm dịch vụ</div>
+        <div class="header__items">Viện nghiên cứu</div>
+        <div class="header__items">Công ty Lectco</div>
+        <div class="header__items">Thư điện tử</div>
+        <div class="header__items">Sitemap</div>
+        <div class="header__items">Liên hệ</div>
+        <div class="header__items"></div>
+    </div>
+</header>
+  <header>
+    <div class="color-picker">
+      <label for="whiteRadio">Trắng</label>
+      <input type="radio" id="whiteRadio" name="colorPick" value="white" checked>
+      <br>
+      <label for="redRadio">Đỏ</label>
+      <input type="radio" id="redRadio" name="colorPick" value="red">
+      <br>
+      <label for="greenRadio">Xanh lá cây</label>
+      <input type="radio" id="greenRadio" name="colorPick" value="green">
+      <br>
+      <label for="blueRadio">Xanh da trời</label>
+      <input type="radio" id="blueRadio" name="colorPick" value="blue">
+    </div>
+    <script src="/B3_Web/csdl.js"></script>
+    <h1>Giới thiệu môn Cơ sở dữ liệu</h1>
+  </header>
+
+  <div class="content">
+    <h2>Tổng quan về môn học</h2>
+    <p>Cơ sở dữ liệu là một chủ đề quan trọng trong khoa học máy tính. Nó liên quan đến việc lưu trữ, truy xuất và xử lý dữ liệu trong các ứng dụng phần mềm.</p>
+    <p>Môn học này sẽ giúp sinh viên hiểu được những khái niệm cơ bản và kỹ thuật trong cơ sở dữ liệu, từ các mô hình dữ liệu đơn giản cho đến các cơ sở dữ liệu phức tạp. </p>
+    
+    <h2>Các học phần liên quan</h2>
+    <ul>
+      <li>Cơ sở dữ liệu phân tán</li>
+      <li>Khai thác dữ liệu và trí tuệ nhân tạo</li>
+      <li>Hệ thống thông tin quản lý</li>
+    </ul>
+    
+    <h2>Kiến thức học được sau khi hoàn thành môn học</h2>
+    <ul>
+      <li>Nắm vững các khái niệm cơ bản và kỹ thuật trong cơ sở dữ liệu</li>
+      <li>Biết cách thiết kế và xây dựng cơ sở dữ liệu phức tạp</li>
+      <li>Hiểu được các kỹ thuật truy vấn và xử lý dữ liệu trong SQL</li>
+      <li>Bảo mật và quản trị cơ sở dữ liệu</li>
+    </ul>
+    
+    <h2>Bảng kết quả học tập của các sinh viên tiêu biểu</h2>
+    <table>
+      <tr>
+        <th>Tên sinh viên</th>
+        <th>Điểm số</th>
+      </tr>
+      <tr>
+        <td>Nguyễn Văn A</td>
+        <td>9.0</td>
+      </tr>
+      <tr>
+        <td>Trần Thị B</td>
+        <td>8.5</td>
+      </tr>
+      <tr>
+        <td>Lê Minh C</td>
+        <td>8.0</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2023 - Giới thiệu môn Cơ sở dữ liệu</p>
+  </footer>
+
+  <script src="/B3_Web/csdl.js"></script>
+</body>
+
+</html>
